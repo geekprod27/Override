@@ -1,0 +1,54 @@
+int64_t secret_backdoor()
+{
+    char var_88[0x80];
+    fgets(&var_88, 0x80, *stdin);
+    return system(&var_88);
+}
+
+int64_t handle_msg()
+{
+    int64_t var_3c;
+    __builtin_memset(&var_3c, 0, 0x28);
+    int32_t var_14 = 0x8c;
+    char var_c8[0x8c];
+    set_username(&var_c8);
+    set_msg(&var_c8);
+    return puts(">: Msg sent!");
+}
+
+char* set_msg(char* arg1)
+{
+    char buf[0x400];
+    __builtin_memset(&buf, 0, 0x400);
+    puts(">: Msg @Unix-Dude");
+    printf(">>: ");
+    fgets(&buf, 0x400, *stdin);
+    return strncpy(arg1, &buf, *(arg1 + 0xb4));
+}
+
+int64_t set_username(int64_t arg1)
+{
+    char buf[0x8c];
+    __builtin_memset(&buf, 0, 0x80);
+    puts(">: Enter your username");
+    printf(">>: ");
+    fgets(&buf, 0x80, *stdin);
+    
+    for (int32_t i = 0; i <= 0x28; i += 1)
+    {
+        if (!buf[i])
+            break;
+        
+        *(arg1 + i + 0x8c) = buf[i];
+    }
+    
+    return printf(">: Welcome, %s", arg1 + 0x8c);
+}
+
+int32_t main(int32_t argc, char** argv, char** envp)
+{
+    puts("--------------------------------------------\n|   ~Welcome to l33t-m$n ~    v1337        |"
+    "--------------------------------------------");
+    handle_msg();
+    return 0;
+}
